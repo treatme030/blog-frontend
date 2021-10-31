@@ -84,7 +84,7 @@ const TagBox = ({ onChangeTags, tags }) => {
                 return;
             }
             const nextTags = [...localTags, tag]
-            // setLocalTags(nextTags)
+            setLocalTags(nextTags)
             onChangeTags(nextTags)
         },
         [localTags, onChangeTags]
@@ -93,9 +93,11 @@ const TagBox = ({ onChangeTags, tags }) => {
     //tag 제거
     const onRemove = useCallback(
         tag => {
-            setLocalTags(localTags.filter(t => t !== tag))
+            const nextTags = localTags.filter(t => t !== tag)
+            setLocalTags(nextTags)
+            onChangeTags(nextTags)
         },
-        [localTags]
+        [localTags, onChangeTags]
     )
 
     const onChange = useCallback(e => {
