@@ -6,6 +6,7 @@ import PostActionButton from '../../components/post/PostActionButton';
 import PostViewer from '../../components/post/PostViewer';
 import { readPost, unloadPost } from '../../modules/post';
 import { setOriginalPost } from '../../modules/write';
+import { removePost } from '../../lib/api/posts';
 
 const PostViewerContainer = ({ match, history }) => {
     const { postId } = match.params;
@@ -30,6 +31,15 @@ const PostViewerContainer = ({ match, history }) => {
         history.push('/write');
     }
 
+    const onRemove = async () => {
+        try {
+            await removePost(postId);
+            history.push('/');
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     const ownPost = (user && user._id) === (post && post.user._id);
 
     return (
@@ -37,7 +47,7 @@ const PostViewerContainer = ({ match, history }) => {
             post={post}
             loading={loading}
             error={error}
-            actionButton={ownPost && <PostActionButton onEdit={onEdit} />}
+            actionButton={ownPost && <PostActionButton onEdit={onEdit} onRemove={onRemove} />}
         />
     );
 };
