@@ -14,3 +14,10 @@ export const listPosts = ({ page, username, tag }) => {
     });
     return client.get(`/api/posts?${queryString}`)//쿼리로 만들어서 API 호출
 };
+
+export const updatePost = ({ id, title, body, tags }) =>
+    client.patch(`/api/posts/${id}`, {
+        title,
+        body,
+        tags,
+    })
