@@ -10,14 +10,15 @@ const EditorContainer = () => {
         body: write.body,
     }))
 
-    const onChangeField = useCallback(payload => dispatch(changeField(payload)), [dispatch])
-
+    const onChangeField = useCallback(payload => dispatch(changeField(payload)), [
+        dispatch,
+    ]);
     //언마운트(컴포넌트가 DOM에서 제거, 사용자가 WritePage에서 벗어날 때) 될 때 초기화
     useEffect(() => {
         return () => {
-            dispatch(initialize())
-        }
-    }, [dispatch])
+            dispatch(initialize());
+        };
+    }, [dispatch]);
 
     return (
         <Editor onChangeField={onChangeField} title={title} body={body} />

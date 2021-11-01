@@ -48,15 +48,16 @@ const Editor = ({ onChangeField, title, body }) => {
                     ['blockquote', 'code-block', 'link', 'image'],
                 ],
             },
-        })
-        //quill에 text-change 이벤트 핸들러 등록 
+        });
+
+        // quill에 text-change 이벤트 핸들러 등록
         const quill = quillInstance.current;
         quill.on('text-change', (delta, oldDelta, source) => {
             if (source === 'user') {
-                onChangeField({ key: 'body', value: quill.root.innerHTML })
+                onChangeField({ key: 'body', value: quill.root.innerHTML });
             }
-        })
-    }, [onChangeField])
+        });
+    }, [onChangeField]);
 
     const onChangeTitle = e => {
         onChangeField({ key: 'title', value: e.target.value })

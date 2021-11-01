@@ -5,9 +5,9 @@ import Button from '../common/Button';
 const WriteActionButtonsBlock = styled.div`
     margin-top: 1rem;
     margin-bottom: 3rem;
-    /* button + button {
+    button + button {
         margin-left: 0.5rem;
-    } */
+    }
 `;
 
 const StyledButton = styled(Button)`
