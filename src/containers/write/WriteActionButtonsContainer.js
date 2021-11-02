@@ -31,7 +31,7 @@ const WriteActionButtonsContainer = ({ history }) => {
     };
 
     //취소
-    const onCancle = () => {
+    const onCancel = () => {
         history.goBack()
     }
 
@@ -50,7 +50,7 @@ const WriteActionButtonsContainer = ({ history }) => {
     return (
         <WriteActionButtons
             onPublish={onPublish}
-            onCancle={onCancle}
+            onCancel={onCancel}
             isEdit={!!originalPostId}
         />
     );
